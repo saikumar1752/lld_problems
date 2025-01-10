@@ -5,6 +5,7 @@ This repository contains resources to learn Low Level Design (LLD) / Object Orie
 ### Easy
 
 - [LRU Cache](https://github.com/saikumar1752/lld_problems/tree/main/lru_cache)
+- [Snake and Ladder Game](https://github.com/saikumar1752/lld_problems/tree/main/snakes_and_ladder)
 
 ## Books
 
