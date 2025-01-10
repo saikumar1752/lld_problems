@@ -18,6 +18,6 @@ class HashMapStorage(Storage):
         if key not in self._map:
             raise KeyError(f"Key `{key}` does not exist")
         self._map.pop(key)
-    
+
     def get_size(self):
         return len(self._map)

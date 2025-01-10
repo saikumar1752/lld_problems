@@ -1,5 +1,5 @@
-from storage.hash_map_storage import HashMapStorage
 from singleton import singleton
+from storage.hash_map_storage import HashMapStorage
 
 
 @singleton
