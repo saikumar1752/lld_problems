@@ -10,3 +10,8 @@
 - If a player lands on a cell with the base of a ladder, they should climb up to the cell at the top of the ladder.
 - The game should continue until one of the players reaches the final cell on the board.
 - The game should handle multiple game sessions concurrently, allowing different groups of players to play independently.
+
+
+## Class diagram
+
+![Class Diagram](./class_diagram.png)

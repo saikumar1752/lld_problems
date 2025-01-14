@@ -8,3 +8,7 @@
 - The cache should have a fixed capacity, specified during initialization.
 - The cache should be thread-safe, allowing concurrent access from multiple threads.
 - The cache should be efficient in terms of time complexity for both put and get operations, ideally O(1).
+
+## Class diagram
+
+![Class Diagram](./class_diagram.png)

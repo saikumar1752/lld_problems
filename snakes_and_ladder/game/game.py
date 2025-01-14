@@ -9,14 +9,14 @@ from game.player import Player
 
 class SnakeAndLadderGame:
     def __init__(self, players: List[Player], dices: List[Dice], board_size: int):
-        self.players = players
-        self.dices = dices
-        self.board_size = board_size
         self.dice_manager = DiceManager(dices)
+        self.players = players
         self.board = Board(board_size)
-        self.current_player_index = 0
-        self.id = uuid.uuid4()
         self.board.add_snakes_and_ladders()
+        self.dices = dices
+        self.id = uuid.uuid4()
+        self.board_size = board_size
+        self.current_player_index = 0
 
     def is_game_over(self):
         return any(player.position == self.board_size for player in self.players)
