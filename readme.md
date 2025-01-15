@@ -7,6 +7,10 @@ This repository contains resources to learn Low Level Design (LLD) / Object Orie
 - [LRU Cache](https://github.com/saikumar1752/lld_problems/tree/main/lru_cache)
 - [Snake and Ladder Game](https://github.com/saikumar1752/lld_problems/tree/main/snakes_and_ladder)
 
+### Hard
+
+- [Resource Management/Task Executor](https://github.com/saikumar1752/lld_problems/tree/main/resource_management)
+
 ## Books
 
 - [Design Pattersn a.k.a Gang of Four](https://www.amazon.in/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8)
