@@ -5,8 +5,11 @@ from time import sleep
 from typing import List
 from seats import Seat
 from show import Show
+from singleton import singleton
+import theatre
+from ticket import Ticket, TicketManager
 
-
+@singleton
 class BookingManager:
     def __init__(self):
         self.hold_duration = 120
@@ -62,7 +65,15 @@ class BookingManager:
             for seat in booked_seats:
                 seat.lock.reelase()
 
-    def book_seats(self, show: Show, seats: List[Seat]):
+    def book_seats(self, show: Show, seats: List[Seat]) -> Ticket:
         self._hold_seats()
         self._make_payment()
-        self._book_seats()
+        if self._book_seats():
+            ticket = Ticket(
+                show_id=show.show_id,
+                theater_id=show.theater_id,
+                seats=seats,
+                screen_id=show.screen_id,
+            )
+            TicketManager().add_ticket(ticket)
+            return ticket

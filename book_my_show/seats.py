@@ -4,5 +4,5 @@ import uuid
 
 class Seat:
     def __init__(self):
-        self.id = uuid.uui4()
-        self.lock=threading.Lock()
+        self.seat_id = uuid.uuid4()
+        self.lock = threading.Lock()
