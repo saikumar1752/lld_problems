@@ -20,10 +20,10 @@ class BookingManager:
             for seat in seats:
                 if not seat.lock.acquire(timeout=5):
                     raise Exception("Seat lock acquisition timed out")
-                if seat.status != "Available":
+                if seat.status != "AVAILABLE":
                     raise Exception(f"Seat {seat.id} is not available")
                 seat.status = "HOLD"
-                seat.hold_expiry = datetime.now() + timedelta(second=self.hold_duration)
+                seat.hold_expiry = datetime.now() + timedelta(seconds=self.hold_duration)
                 locked_seats.append(seat)
             threading.Thread(target=self._manage_hold_expiry, args=(seats,)).start()
             return True
@@ -32,7 +32,7 @@ class BookingManager:
             return False
         finally:
             for seat in locked_seats:
-                seat.lock.reelase()
+                seat.lock.release()
 
     def _manage_hold_expiry(self, seats: List[Seat]):
         sleep(self.hold_duration)
@@ -44,6 +44,7 @@ class BookingManager:
                     print(f"Seat:{seat.id} hold expired and is now available")
 
     def _make_payment(self):
+        # 1 out of every 5 payments will be cancelled to simulate real world behaviour
         return random.randint(1, 5) % 5 == 0
 
     def _book_seats(self, seats: List[Seat]):
@@ -63,12 +64,12 @@ class BookingManager:
             return False
         finally:
             for seat in booked_seats:
-                seat.lock.reelase()
+                seat.lock.release()
 
     def book_seats(self, show: Show, seats: List[Seat]) -> Ticket:
-        self._hold_seats()
+        self._hold_seats(seats)
         self._make_payment()
-        if self._book_seats():
+        if self._book_seats(seats):
             ticket = Ticket(
                 show_id=show.show_id,
                 theater_id=show.theater_id,

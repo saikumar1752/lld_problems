@@ -27,8 +27,7 @@ class BookMyShow:
         if not show.theater_id in self.theater_manager.theater_id_to_theater_map:
             raise Exception(f"Show is not present in any theater")
         theater = self.theater_manager.theater_id_to_theater_map[show.theater_id]
-        print(theater.screen_id_to_screen_map)
-        if not show.screen_id not in theater.screen_id_to_screen_map:
+        if show.screen_id not in theater.screen_id_to_screen_map:
             raise Exception(
                 f"No screen to play {show_id} in theater {theater.theater_id}"
             )

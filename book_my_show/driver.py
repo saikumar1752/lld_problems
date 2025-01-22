@@ -1,16 +1,12 @@
 from datetime import datetime
-from typing import List
-from uuid import UUID
+
 from book_my_show import BookMyShow
-from booking_manager import BookingManager
 from city import City, CityManager
 from movie import Movie, MovieManager
 from screen import Screen
+from seats import Seat
 from show import Show, ShowManager
 from theatre import Theater, TheaterManager
-import theatre
-from seats import Seat
-
 
 city = City(pincode=00000, name="Dil-Dil")
 
@@ -45,7 +41,6 @@ show = Show(
     end_time=datetime.now(),
     movie_id=movie.movie_id,
 )
-print("show created", screen_1.screen_id)
 show_manager = ShowManager()
 show_manager.add_show(show)
 
