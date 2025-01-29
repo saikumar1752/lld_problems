@@ -10,6 +10,7 @@ This repository contains resources to learn Low Level Design (LLD) / Object Orie
 ### Medium
 
 - [Book My Show](https://github.com/saikumar1752/lld_problems/tree/main/book_my_show)
+- [Digital Wallet](https://github.com/saikumar1752/lld_problems/tree/main/digital_wallet)
 
 ## Books
 
