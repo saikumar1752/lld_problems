@@ -16,13 +16,16 @@ class DigitalWalletSystem:
         wallet = self.wallet_manager.create_wallet(wallet_name, initial_amount)
         return wallet
 
-    def transfer_money(
-        self, from_wallet_name: str, to_wallet_name: str, amount: float
-    ):
+    def transfer_money(self, from_wallet_name: str, to_wallet_name: str, amount: float):
         from_wallet = self.wallet_manager.get_wallet(from_wallet_name)
         to_wallet = self.wallet_manager.get_wallet(to_wallet_name)
         self.transaction_manager.process_transactions(
-            Transaction(from_wallet=from_wallet, to_wallet=to_wallet, amount=amount, transaction_type=TransactionType.TRANSACTION)
+            Transaction(
+                from_wallet=from_wallet,
+                to_wallet=to_wallet,
+                amount=amount,
+                transaction_type=TransactionType.TRANSACTION,
+            )
         )
 
     def get_statement(self, wallet_name: str):
@@ -43,3 +46,7 @@ class DigitalWalletSystem:
 
     def offer_2(self):
         self.transaction_manager.apply_offer_2()
+
+    def start_fixed_deposit(self, wallet_name: str, amount: float):
+        wallet = self.wallet_manager.get_wallet(wallet_name)
+        wallet.start_fixed_deposit(amount)

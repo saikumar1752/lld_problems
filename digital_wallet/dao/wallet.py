@@ -55,7 +55,7 @@ class WalletManager:
             else:
                 raise ValueError("Wallet not found")
 
-    def create_wallet(self, name, amount: float) -> Wallet:
+    def create_wallet(self, name: str, amount: float) -> Wallet:
         with self._lock:
             if name in self.name_to_wallet_map:
                 raise ValueError("Wallet already exists")
