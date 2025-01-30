@@ -7,9 +7,9 @@ def singleton(cls: Type):
     lock = threading.Lock()
 
     def get_instance(*args, **kwargs):
-        if not cls in instance_map:
+        if cls not in instance_map:
             with lock:
-                if not cls in instance_map:
+                if cls not in instance_map:
                     instance_map[cls] = cls(*args, **kwargs)
         return instance_map[cls]
 

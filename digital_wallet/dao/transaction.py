@@ -63,13 +63,13 @@ class TransactionManager:
         )
         with transaction.from_wallet._lock, transaction.to_wallet._lock:
             if transaction.from_wallet.balance == transaction.to_wallet.balance:
-                transaction.from_wallet.deposit(10)
-                transaction.to_wallet.deposit(10)
+                transaction.from_wallet.deposit(10, alread_locked=True)
+                transaction.to_wallet.deposit(10, alread_locked=True)
 
     def apply_offer_2(self):
         wallet_manager = WalletManager()
         overview = wallet_manager.get_overview()
-        with self._lock():
+        with self._lock:
             wallet_stats = [
                 (len(self.transactions.get(name, [])), balance, name)
                 for name, balance in overview

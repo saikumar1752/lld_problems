@@ -12,17 +12,21 @@ class Wallet:
         self._lock = threading.Lock()
 
     def withdraw(self, amount: float):
+        print("gotcha")
         with self._lock:
             if self.balance >= amount:
                 self.balance -= amount
                 if self.fixed_deposit and self.balance < self.fixed_deposit[0]:
-                    self.fixed_deposit = None  # Dissoble Fixed Deposit
+                    self.fixed_deposit = None  # Dissolve Fixed Deposit
                 elif self.fixed_deposit and self.balance >= self.fixed_deposit[0]:
                     self.fixed_deposit[1] -= 1
-                if self.fixed_deposit[1] == 0:
+                elif self.fixed_deposit and self.fixed_deposit[1] == 0:
                     self.balance += 10
 
-    def deposit(self, amount: float):
+    def deposit(self, amount: float, alread_locked: bool = False):
+        if alread_locked:
+            self.balance += amount
+            return
         with self._lock:
             self.balance += amount
             if self.fixed_deposit:
